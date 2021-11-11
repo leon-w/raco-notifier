@@ -37,7 +37,7 @@ class Token:
             }, f)
 
     def validate(self):
-        if time.time() - 10 > self.expires_at:
+        if time.time() + 60 > self.expires_at:
             data = refresh_token(self.refresh_token)
             self.token = data['access_token']
             self.expires_at = data['expires_in'] + int(time.time())
